@@ -1,0 +1,31 @@
+# Dependency directories
+node_modules/
+
+# Temporary files
+.DS_Store
+npm-debug.log*
+yarn-error.log*
+
+# System files
+.env
+
+# Log files
+logs/*.log
+
+# Test results
+coverage/
+
+# Compiled files
+build/
+dist/
+
+# IDE specific files
+.idea/
+.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor backup files
+*.swp
