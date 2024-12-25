@@ -1,3 +1,5 @@
-2024/12/25-20:14:19.961 35e8 Reusing MANIFEST C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
-2024/12/25-20:14:19.962 35e8 Recovering log #7
-2024/12/25-20:14:19.963 35e8 Reusing old log C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\Local Storage\leveldb/000007.log 
+2024/12/25-20:32:06.093 4674 Reusing MANIFEST C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
+2024/12/25-20:32:06.093 4674 Recovering log #7
+2024/12/25-20:32:06.096 4674 Level-0 table #10: started
+2024/12/25-20:32:06.106 4674 Level-0 table #10: 13083 bytes OK
+2024/12/25-20:32:06.112 4674 Delete type=0 #7

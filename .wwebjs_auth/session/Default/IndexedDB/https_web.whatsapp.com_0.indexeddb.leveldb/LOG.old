@@ -1,13 +1,13 @@
-2024/12/25-20:11:27.878 3968 Reusing MANIFEST C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2024/12/25-20:11:27.879 3968 Recovering log #104
-2024/12/25-20:11:28.080 3968 Reusing old log C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000104.log 
-2024/12/25-20:11:32.255 42b0 Level-0 table #109: started
-2024/12/25-20:11:32.288 42b0 Level-0 table #109: 437057 bytes OK
-2024/12/25-20:11:32.291 42b0 Delete type=0 #104
-2024/12/25-20:11:32.295 42b0 Manual compaction at level-0 from '\x00(\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00)\x00\x00\x00' @ 0 : 0; will stop at (end)
-2024/12/25-20:11:41.543 44e8 Compacting 1@1 + 1@2 files
-2024/12/25-20:11:42.144 44e8 Generated table #110@1: 49719 keys, 1730129 bytes
-2024/12/25-20:11:42.144 44e8 Compacted 1@1 + 1@2 files => 1730129 bytes
-2024/12/25-20:11:42.146 44e8 compacted to: files[ 0 0 1 0 0 0 0 ]
-2024/12/25-20:11:42.147 44e8 Delete type=2 #106
-2024/12/25-20:11:42.147 44e8 Delete type=2 #109
+2024/12/25-20:14:20.911 391c Reusing MANIFEST C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/12/25-20:14:20.912 391c Recovering log #108
+2024/12/25-20:14:21.047 391c Reusing old log C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000108.log 
+2024/12/25-20:14:26.034 29dc Level-0 table #113: started
+2024/12/25-20:14:26.117 29dc Level-0 table #113: 177621 bytes OK
+2024/12/25-20:14:26.149 29dc Delete type=0 #108
+2024/12/25-20:14:26.149 29dc Manual compaction at level-0 from '\x00)\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00*\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/12/25-20:14:36.127 3bcc Compacting 1@1 + 1@2 files
+2024/12/25-20:14:36.695 3bcc Generated table #114@1: 50564 keys, 1754336 bytes
+2024/12/25-20:14:36.695 3bcc Compacted 1@1 + 1@2 files => 1754336 bytes
+2024/12/25-20:14:36.742 3bcc compacted to: files[ 0 0 1 0 0 0 0 ]
+2024/12/25-20:14:36.743 3bcc Delete type=2 #110
+2024/12/25-20:14:36.743 3bcc Delete type=2 #113
