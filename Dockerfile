@@ -1,6 +1,6 @@
 FROM node:18-alpine
 
-# Install dependencies untuk menjalankan Chrome
+# Install dependencies untuk Chromium
 RUN apk update && apk add --no-cache \
     chromium \
     nss \
@@ -23,9 +23,11 @@ RUN npm install
 # Copy semua file aplikasi ke dalam container
 COPY . .
 
-# Set environment variable untuk menjalankan aplikasi
+# Set environment variable
 ENV NODE_ENV=production
-ENV MONGO_URI=${MONGO_URI}
 
-# Start aplikasi
+# Expose port
+EXPOSE 3000
+
+# Jalankan aplikasi
 CMD ["npm", "start"]
