@@ -56,10 +56,9 @@ jobs:
         run: |
           curl -sSL https://railway.app/install.sh | sh
 
-      # Authenticate to Railway using the RAILWAY_TOKEN
-      - name: Authenticate with Railway
-        run: |
-          railway login --token ${{ secrets.RAILWAY_TOKEN }}
+      # Export the RAILWAY_TOKEN for authentication
+      - name: Set Railway Token
+        run: echo "RAILWAY_TOKEN=${{ secrets.RAILWAY_TOKEN }}" >> $GITHUB_ENV
 
       # Deploy to Railway using Docker
       - name: Deploy to Railway
