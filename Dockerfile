@@ -16,9 +16,16 @@ ENV PUPPETEER_EXECUTABLE_PATH="/usr/bin/chromium-browser"
 
 WORKDIR /usr/src/app
 
+# Copy package.json dan package-lock.json
 COPY package*.json ./
 RUN npm install
 
+# Copy semua file aplikasi ke dalam container
 COPY . .
 
+# Set environment variable untuk menjalankan aplikasi
+ENV NODE_ENV=production
+ENV MONGO_URI=${MONGO_URI}
+
+# Start aplikasi
 CMD ["npm", "start"]

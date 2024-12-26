@@ -2,9 +2,11 @@ const cron = require('node-cron');
 const Task = require('../models/Task');
 const { client } = require('../whatsapp');
 
+// Menjadwalkan pengiriman pesan setiap 5 menit
 cron.schedule("*/5 * * * *", async () => {
   console.log("Checking for tasks to send...");
 
+  // Pastikan client WhatsApp sudah terhubung sebelum mencoba mengirim pesan
   if (!client || !client.pupPage || !client.pupPage.isConnected()) {
     console.log("WhatsApp client is not connected yet.");
     return;
@@ -16,6 +18,7 @@ cron.schedule("*/5 * * * *", async () => {
     sent: { $ne: true },
   }).populate("users");
 
+  // Iterasi melalui semua task yang perlu dikirim
   for (const task of tasks) {
     const deadline = new Date(task.deadlineDate);
     const [hour, minute] = task.deadlineTime.split(':');
@@ -34,12 +37,14 @@ cron.schedule("*/5 * * * *", async () => {
       hour12: false
     })}, Pukul ${task.deadlineTime}\n`;
 
+    // Menambahkan pesan khusus berdasarkan waktu deadline
     if (daysUntilDeadline === 3) {
       message += '🚨 Tugas ini harus diselesaikan dalam 3 hari! \n';
     } else if (daysUntilDeadline === 1) {
       message += '🚨 *Urgent:* Deadline tinggal 1 hari lagi! \n';
     }
 
+    // Mengirim pesan ke semua pengguna terkait task ini
     for (const user of task.users) {
       try {
         console.log(`Sending message to: ${user.phoneNumber}@c.us`);
@@ -50,6 +55,7 @@ cron.schedule("*/5 * * * *", async () => {
       }
     }
 
+    // Tandai task sebagai telah terkirim dan simpan
     task.sent = true;
     await task.save();
   }
