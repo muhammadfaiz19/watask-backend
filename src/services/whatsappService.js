@@ -11,23 +11,18 @@ cron.schedule("*/5 * * * *", async () => {
   }
 
   const now = new Date();
-
-  // Mengambil tugas yang belum pernah dikirim atau perlu dikirim ulang
   const tasks = await Task.find({
-    deadlineDate: { $gte: now }, // Hanya tugas yang belum lewat deadline
-    sent: { $ne: true }, // Tugas yang belum dikirim
+    deadlineDate: { $gte: now },
+    sent: { $ne: true },
   }).populate("users");
 
   for (const task of tasks) {
-    // Menghitung selisih waktu
     const deadline = new Date(task.deadlineDate);
     const [hour, minute] = task.deadlineTime.split(':');
     deadline.setHours(hour, minute, 0);
+    const timeUntilDeadline = deadline - now;
+    const daysUntilDeadline = Math.floor(timeUntilDeadline / (1000 * 60 * 60 * 24));
 
-    const timeUntilDeadline = deadline - now; // Selisih waktu dalam milidetik
-    const daysUntilDeadline = Math.floor(timeUntilDeadline / (1000 * 60 * 60 * 24)); // Menghitung hari sampai deadline
-
-    // Tentukan pesan berdasarkan selisih waktu
     let message = `Halo, tugas baru nih! 🎉\n\n🔹 *Tugas:* ${task.name}\n📝 *Deskripsi:* ${task.description}\n⏰ *Tanggal Deadline:* ${new Date(task.deadlineDate).toLocaleString('id-ID', {
       weekday: 'long',
       year: 'numeric',
@@ -48,17 +43,13 @@ cron.schedule("*/5 * * * *", async () => {
     for (const user of task.users) {
       try {
         console.log(`Sending message to: ${user.phoneNumber}@c.us`);
-        await client.sendMessage(
-          `${user.phoneNumber}@c.us`,
-          message
-        );
+        await client.sendMessage(`${user.phoneNumber}@c.us`, message);
         console.log(`Message sent to ${user.phoneNumber}`);
       } catch (err) {
         console.error("Failed to send message:", err);
       }
     }
 
-    // Tandai task sebagai sudah dikirim
     task.sent = true;
     await task.save();
   }

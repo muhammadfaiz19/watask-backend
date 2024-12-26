@@ -17,26 +17,23 @@ clientMongo.connect().then(() => {
 class MongoAuth extends LocalAuth {
     constructor() {
         super();
-        this.db = clientMongo.db('whatsapp_sessions'); // Gunakan database yang diinginkan
-        this.collection = this.db.collection('sessions'); // Koleksi untuk menyimpan session
+        this.db = clientMongo.db('whatsapp_sessions');
+        this.collection = this.db.collection('sessions');
     }
 
-    // Menyimpan session ke MongoDB
     async saveSession(session) {
         await this.collection.updateOne(
-            { _id: 'whatsapp_session' }, // Gunakan ID untuk session ini
-            { $set: { session: session } }, // Set session baru
-            { upsert: true } // Jika tidak ada, buat baru
+            { _id: 'whatsapp_session' },
+            { $set: { session: session } },
+            { upsert: true }
         );
     }
 
-    // Memuat session dari MongoDB
     async loadSession() {
         const sessionDoc = await this.collection.findOne({ _id: 'whatsapp_session' });
-        return sessionDoc ? sessionDoc.session : null; // Mengembalikan session jika ada
+        return sessionDoc ? sessionDoc.session : null;
     }
 
-    // Menghapus session dari MongoDB
     async deleteSession() {
         await this.collection.deleteOne({ _id: 'whatsapp_session' });
     }
@@ -44,14 +41,14 @@ class MongoAuth extends LocalAuth {
 
 // Membuat client WhatsApp menggunakan MongoAuth untuk session
 const client = new Client({
-    authStrategy: new MongoAuth(), // Menggunakan MongoDB untuk session
+    authStrategy: new MongoAuth(),
     puppeteer: {
-        headless: true, // Pastikan ini diatur ke true untuk mode headless
+        headless: true,
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
-            '--disable-gpu', // Menambahkan ini jika masih ada masalah
-            '--remote-debugging-port=9222' // Menambahkan remote debugging untuk troubleshooting
+            '--disable-gpu',
+            '--remote-debugging-port=9222',
         ]
     }
 });
