@@ -60,7 +60,12 @@ jobs:
       - name: Set Railway Token
         run: echo "RAILWAY_TOKEN=${{ secrets.RAILWAY_TOKEN }}" >> $GITHUB_ENV
 
+      # Set Railway Project Token in environment
+      - name: Set Railway Project Token
+        run: echo "RAILWAY_PROJECT_TOKEN=${{ secrets.RAILWAY_PROJECT_TOKEN }}" >> $GITHUB_ENV
+
       # Deploy to Railway using Docker
       - name: Deploy to Railway
         run: |
-          railway up -- --docker
+          railway up --project-token ${{ secrets.RAILWAY_PROJECT_TOKEN }} --docker
+
