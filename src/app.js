@@ -1,7 +1,9 @@
 // src/app.js
 const express = require('express');
 const mongoose = require('mongoose');
-const { createTask } = require('./controllers/taskController');
+const taskRoutes = require('./routes/taskRoutes');
+const userRoutes = require('./routes/userRoutes');
+const client = require('./whatsapp');  // Impor client dari whatsapp.js
 require('dotenv').config();
 
 const app = express();
