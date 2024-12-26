@@ -1,3 +1,2 @@
-2024/12/26-11:04:11.375 15f4 Reusing MANIFEST C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
-2024/12/26-11:04:11.430 15f4 Recovering log #11
-2024/12/26-11:04:11.431 15f4 Reusing old log C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\Local Storage\leveldb/000011.log 
+2024/12/26-13:08:43.604 4b1c Creating DB C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\Local Storage\leveldb since it was missing.
+2024/12/26-13:08:43.808 4b1c Reusing MANIFEST C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001

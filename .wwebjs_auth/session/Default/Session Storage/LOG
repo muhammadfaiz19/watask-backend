@@ -1,3 +1,2 @@
-2024/12/26-11:04:14.873 14fc Reusing MANIFEST C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\Session Storage/MANIFEST-000001
-2024/12/26-11:04:14.888 14fc Recovering log #3
-2024/12/26-11:04:14.889 14fc Reusing old log C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\Session Storage/000003.log 
+2024/12/26-13:08:45.470 4c84 Creating DB C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\Session Storage since it was missing.
+2024/12/26-13:08:45.496 4c84 Reusing MANIFEST C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\Session Storage/MANIFEST-000001

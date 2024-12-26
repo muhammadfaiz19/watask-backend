@@ -1,16 +1,18 @@
 FROM node:18-alpine
 
-# Install dependencies for Puppeteer/Chromium
-RUN apk add --no-cache \
+# Install dependencies untuk menjalankan Chrome
+RUN apk update && apk add --no-cache \
     chromium \
     nss \
     freetype \
     harfbuzz \
     ca-certificates \
-    ttf-freefont
+    ttf-freefont \
+    fontconfig \
+    && rm -rf /var/cache/apk/*
 
-# Set environment variable for Puppeteer to use system Chromium
-ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+# Tentukan path ke executable Chrome
+ENV PUPPETEER_EXECUTABLE_PATH="/usr/bin/chromium-browser"
 
 WORKDIR /usr/src/app
 

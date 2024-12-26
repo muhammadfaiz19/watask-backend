@@ -1,10 +1,10 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
-const { MongoClient } = require('mongodb');  
+const { MongoClient } = require('mongodb');
 require('dotenv').config();
 
 // Koneksi MongoDB
-const mongoUri = process.env.MONGO_URI; 
+const mongoUri = process.env.MONGO_URI;
 const clientMongo = new MongoClient(mongoUri);
 
 clientMongo.connect().then(() => {
@@ -46,8 +46,13 @@ class MongoAuth extends LocalAuth {
 const client = new Client({
     authStrategy: new MongoAuth(), // Menggunakan MongoDB untuk session
     puppeteer: {
-        headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
+        headless: true, // Pastikan ini diatur ke true untuk mode headless
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-gpu', // Menambahkan ini jika masih ada masalah
+            '--remote-debugging-port=9222' // Menambahkan remote debugging untuk troubleshooting
+        ]
     }
 });
 

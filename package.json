@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser node src/app.js",
+    "start": "node src/app.js",
     "dev": "nodemon src/app.js"
   },
   "keywords": [],
