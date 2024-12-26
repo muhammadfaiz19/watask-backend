@@ -63,4 +63,4 @@ jobs:
       # Deploy to Railway using Docker
       - name: Deploy to Railway
         run: |
-          railway up --docker
+          railway up -- --docker
