@@ -45,25 +45,24 @@ jobs:
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/wa-task-backend:latest
 
   deploy:
-  runs-on: ubuntu-latest
-  needs: build
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    # Set up Docker for Railway Deployment
-    - name: Install Railway CLI
-      run: |
-        curl -sSL https://railway.app/install.sh | sh
+      # Set up Docker for Railway Deployment
+      - name: Install Railway CLI
+        run: |
+          curl -sSL https://railway.app/install.sh | sh
 
-    # Login to Railway using RAILWAY_TOKEN
-    - name: Login to Railway
-      run: |
-        export RAILWAY_TOKEN=${{ secrets.RAILWAY_TOKEN }}
-        railway login
+      # Login to Railway using RAILWAY_TOKEN
+      - name: Login to Railway
+        run: |
+          export RAILWAY_TOKEN=${{ secrets.RAILWAY_TOKEN }}
+          railway login
 
-    # Deploy to Railway
-    - name: Deploy to Railway
-      run: |
-        railway up --docker
-
+      # Deploy to Railway
+      - name: Deploy to Railway
+        run: |
+          railway up --docker
