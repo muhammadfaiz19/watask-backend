@@ -51,12 +51,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Set up Docker for Railway Deployment
+      # Install Railway CLI
       - name: Install Railway CLI
         run: |
           curl -sSL https://railway.app/install.sh | sh
 
-      # Export the RAILWAY_TOKEN for authentication
+      # Set Railway Token in environment
       - name: Set Railway Token
         run: echo "RAILWAY_TOKEN=${{ secrets.RAILWAY_TOKEN }}" >> $GITHUB_ENV
 
