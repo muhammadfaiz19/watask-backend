@@ -3,10 +3,10 @@ name: CI/CD Pipeline for Docker Deployment
 on:
   push:
     branches:
-      - main  # Trigger the pipeline on push to the main branch
+      - main # Trigger the pipeline on push to the main branch
   pull_request:
     branches:
-      - main  # Trigger the pipeline on pull requests to the main branch
+      - main # Trigger the pipeline on pull requests to the main branch
 
 jobs:
   build:
@@ -20,7 +20,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
 
       # Install dependencies
       - name: Install dependencies
@@ -67,5 +67,4 @@ jobs:
       # Deploy to Railway using Docker
       - name: Deploy to Railway
         run: |
-          railway up --project-token ${{ secrets.RAILWAY_PROJECT_TOKEN }} --docker
-
+          railway up -- --project-token ${{ secrets.RAILWAY_PROJECT_TOKEN }} --docker
