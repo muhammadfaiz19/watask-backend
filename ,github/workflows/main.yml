@@ -1,0 +1,63 @@
+name: CI/CD Pipeline for Docker Deployment
+
+on:
+  push:
+    branches:
+      - main  # Menjalankan pipeline ketika ada push ke branch main
+  pull_request:
+    branches:
+      - main  # Menjalankan pipeline ketika ada pull request ke branch main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Setup Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Build Docker Image
+      - name: Build Docker Image
+        run: |
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/wa-task-backend:${{ github.sha }} -t ${{ secrets.DOCKERHUB_USERNAME }}/wa-task-backend:latest .
+
+      # Login to Docker Hub
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # Push Docker Image to Docker Hub
+      - name: Push Docker Image
+        run: |
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/wa-task-backend:${{ github.sha }}
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/wa-task-backend:latest
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Set up Docker for Railway Deployment
+      - name: Login to Railway
+        run: |
+          curl -sSL https://railway.app/install.sh | sh
+          railway login --token ${{ secrets.RAILWAY_TOKEN }}
+
+      # Deploy to Railway
+      - name: Deploy to Railway
+        run: |
+          railway up --docker

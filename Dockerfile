@@ -1,18 +1,22 @@
-# Base image
 FROM node:18-alpine
 
-# Set working directory
+# Install dependencies for Puppeteer/Chromium
+RUN apk add --no-cache \
+    chromium \
+    nss \
+    freetype \
+    harfbuzz \
+    ca-certificates \
+    ttf-freefont
+
+# Set environment variable for Puppeteer to use system Chromium
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+
 WORKDIR /usr/src/app
 
-# Copy package.json and install dependencies
 COPY package*.json ./
 RUN npm install
 
-# Copy application source code
 COPY . .
 
-# Expose the application port
-EXPOSE 4000
-
-# Start the application
 CMD ["npm", "start"]
