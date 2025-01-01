@@ -1,13 +1,35 @@
-2024/12/26-15:16:06.973 437c Reusing MANIFEST C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2024/12/26-15:16:06.973 437c Recovering log #53
-2024/12/26-15:16:07.082 437c Reusing old log C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000053.log 
-2024/12/26-15:16:10.409 f68 Level-0 table #58: started
-2024/12/26-15:16:10.429 f68 Level-0 table #58: 260629 bytes OK
-2024/12/26-15:16:10.433 f68 Delete type=0 #53
-2024/12/26-15:16:10.434 f68 Manual compaction at level-0 from '\x00\x1b\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x1c\x00\x00\x00' @ 0 : 0; will stop at (end)
-2024/12/26-15:16:18.708 f68 Compacting 1@1 + 1@2 files
-2024/12/26-15:16:19.109 f68 Generated table #59@1: 35047 keys, 1234114 bytes
-2024/12/26-15:16:19.109 f68 Compacted 1@1 + 1@2 files => 1234114 bytes
-2024/12/26-15:16:19.115 f68 compacted to: files[ 0 0 1 0 0 0 0 ]
-2024/12/26-15:16:19.116 f68 Delete type=2 #55
-2024/12/26-15:16:19.116 f68 Delete type=2 #58
+2025/01/01-21:20:08.594 dc8 Reusing MANIFEST C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/01/01-21:20:08.594 dc8 Recovering log #369
+2025/01/01-21:20:08.647 dc8 Reusing old log C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000369.log 
+2025/01/01-21:20:11.204 33c0 Level-0 table #374: started
+2025/01/01-21:20:11.218 33c0 Level-0 table #374: 134470 bytes OK
+2025/01/01-21:20:11.227 33c0 Delete type=0 #369
+2025/01/01-21:20:11.229 32e4 Manual compaction at level-0 from '\x00v\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00w\x00\x00\x00' @ 0 : 0; will stop at '\x00w\x00\x00\x05' @ 750075 : 1
+2025/01/01-21:20:11.230 32e4 Compacting 1@0 + 1@1 files
+2025/01/01-21:20:11.718 32e4 Generated table #375@0: 92829 keys, 1798405 bytes
+2025/01/01-21:20:11.719 32e4 Compacted 1@0 + 1@1 files => 1798405 bytes
+2025/01/01-21:20:11.722 32e4 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/01/01-21:20:11.723 32e4 Delete type=2 #374
+2025/01/01-21:20:11.724 32e4 Manual compaction at level-0 from '\x00w\x00\x00\x05' @ 750075 : 1 .. '\x00w\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/01/01-21:20:11.726 32e4 Level-0 table #377: started
+2025/01/01-21:20:11.735 32e4 Level-0 table #377: 249 bytes OK
+2025/01/01-21:20:11.742 32e4 Delete type=2 #371
+2025/01/01-21:20:11.742 32e4 Delete type=0 #373
+2025/01/01-21:20:11.744 32e4 Manual compaction at level-0 from '\x00w\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00x\x00\x00\x00' @ 0 : 0; will stop at '\x00w\x00\x00\x05' @ 750108 : 0
+2025/01/01-21:20:11.745 32e4 Compacting 1@0 + 1@1 files
+2025/01/01-21:20:12.081 32e4 Generated table #378@0: 92827 keys, 1798368 bytes
+2025/01/01-21:20:12.082 32e4 Compacted 1@0 + 1@1 files => 1798368 bytes
+2025/01/01-21:20:12.103 32e4 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/01/01-21:20:12.104 32e4 Delete type=2 #377
+2025/01/01-21:20:12.110 32e4 Manual compaction at level-0 from '\x00w\x00\x00\x05' @ 750108 : 0 .. '\x00x\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/01/01-21:25:18.278 dc8 Level-0 table #380: started
+2025/01/01-21:25:18.293 dc8 Level-0 table #380: 215499 bytes OK
+2025/01/01-21:25:18.296 dc8 Delete type=2 #375
+2025/01/01-21:25:18.296 dc8 Delete type=0 #376
+2025/01/01-21:25:18.298 dc8 Manual compaction at level-0 from '\x00y\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00z\x00\x00\x00' @ 0 : 0; will stop at '\x00y\x00\x00\x05' @ 759125 : 1
+2025/01/01-21:25:18.298 dc8 Compacting 1@0 + 1@1 files
+2025/01/01-21:25:18.582 dc8 Generated table #381@0: 97072 keys, 1890634 bytes
+2025/01/01-21:25:18.582 dc8 Compacted 1@0 + 1@1 files => 1890634 bytes
+2025/01/01-21:25:18.585 dc8 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/01/01-21:25:18.586 dc8 Delete type=2 #380
+2025/01/01-21:25:18.589 dc8 Manual compaction at level-0 from '\x00y\x00\x00\x05' @ 759125 : 1 .. '\x00z\x00\x00\x00' @ 0 : 0; will stop at (end)

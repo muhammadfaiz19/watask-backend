@@ -1,6 +1,6 @@
 const cron = require('node-cron');
-const Task = require('../models/Task');
-const { client } = require('../whatsapp');
+const Task = require('../models/Task'); // Import model Task
+const { client } = require('../whatsapp'); // Import client WhatsApp
 
 // Menjadwalkan pengiriman pesan setiap 5 menit
 cron.schedule("*/5 * * * *", async () => {
@@ -26,7 +26,7 @@ cron.schedule("*/5 * * * *", async () => {
     const timeUntilDeadline = deadline - now;
     const daysUntilDeadline = Math.floor(timeUntilDeadline / (1000 * 60 * 60 * 24));
 
-    let message = `Halo, tugas baru nih! 🎉\n\n🔹 *Tugas:* ${task.name}\n📝 *Deskripsi:* ${task.description}\n⏰ *Tanggal Deadline:* ${new Date(task.deadlineDate).toLocaleString('id-ID', {
+    let message = `Halo, tugas baru nih! \n\n🔹 *Tugas:* ${task.name}\n📝 *Deskripsi:* ${task.description}\n⏰ *Tanggal Deadline:* ${new Date(task.deadlineDate).toLocaleString('id-ID', {
       weekday: 'long',
       year: 'numeric',
       month: 'long',

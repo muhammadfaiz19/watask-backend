@@ -2,14 +2,14 @@ const Task = require('../models/Task');
 const User = require('../models/User');
 const { client } = require('../whatsapp');
 
-// Function to send task creation message
+// Fungsi untuk mengirim pesan saat tugas dibuat
 const sendTaskCreatedMessage = async (user, task) => {
-  const { phoneNumber } = user;
-  const message = `🎉 *Tugas baru telah dibuat!* 🎉\n\n` +
-    `🔹 **Tugas:** ${task.name}\n` +
-    `📝 **Deskripsi:** ${task.description}\n` +
-    `⏰ **Tanggal Deadline:** ${new Date(task.deadlineDate).toLocaleString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}, Pukul ${task.deadlineTime}\n` +
-    `Jangan lupa untuk menyelesaikan tugas ini tepat waktu!`;
+  const { phoneNumber, name } = user; 
+  const message = `*Halo, ${name}! Tugas baru telah dibuat!* 🎉\n\n` +  
+    `📚 *Tugas Matakuliah:* ${task.name}\n` +
+    `📝 *Deskripsi:* ${task.description}\n` +
+    `⏰ *Deadline:* ${new Date(task.deadlineDate).toLocaleString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}, Pukul ${task.deadlineTime}\n` +
+    `🚀 *Jangan lupa menyelesaikan tugas ini tepat waktu!* 💪`;
 
   try {
     await client.sendMessage(`${phoneNumber}@c.us`, message);
@@ -19,25 +19,25 @@ const sendTaskCreatedMessage = async (user, task) => {
   }
 };
 
-// Function to send reminders
+// Fungsi untuk mengirim pengingat
 const sendReminderMessages = async (user, task, daysUntilDeadline) => {
-  const { phoneNumber } = user;
+  const { phoneNumber, name } = user;  // Mengambil nama pengguna
   let message;
 
   if (daysUntilDeadline === 3) {
-    message = `🚨 *Urgent:* Tugas ${user.name} hampir jatuh tempo, H-3! ⚠️\n\n` +
-      `🔹 **Tugas:** ${task.name}\n` +
-      `📝 **Deskripsi:** ${task.description}\n` +
-      `⏰ **Tanggal Deadline:** ${new Date(task.deadlineDate).toLocaleString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}, Pukul ${task.deadlineTime}\n` +
-      `🚨 **Prioritas:** Waktunya hampir habis! ⚠️\n\n` +
-      `Pastikan kamu menyelesaikan tugas ini!`;
+    message = `⚠️ *Halo, ${name}! Tugasmu hampir jatuh tempo, H-3! ⚠️*\n\n` +  // Menyapa nama pengguna
+      `📚 *Tugas:* ${task.name}\n` +
+      `📝 *Deskripsi:* ${task.description}\n` +
+      `⏰ *Deadline:* ${new Date(task.deadlineDate).toLocaleString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}, Pukul ${task.deadlineTime}\n` +
+      `🚨 *Prioritas:* Waktunya hampir habis! ⚠️\n\n` +
+      `⏳ *Yuk, pastikan tugas ini selesai tepat waktu!* 🌟`;
   } else if (daysUntilDeadline === 1) {
-    message = `🚨 *Urgent!* H-1! Tugas ${user.name} ⏳\n\n` +
-      `🔹 **Tugas:** ${task.name}\n` +
-      `📝 **Deskripsi:** ${task.description}\n` +
-      `⏰ **Tanggal Deadline:** ${new Date(task.deadlineDate).toLocaleString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}, Pukul ${task.deadlineTime}\n` +
-      `🚨 **Prioritas:** Tinggal 1 hari lagi! ⏰\n\n` +
-      `Jangan lupa, selesaikan tugas ini tepat waktu!`;
+    message = `⏰ *Halo, ${name}! H-1! Tugas tinggal 1 hari lagi! ⏳*\n\n` +  // Menyapa nama pengguna
+      `📚 *Tugas:* ${task.name}\n` +
+      `📝 *Deskripsi:* ${task.description}\n` +
+      `⏰ *Deadline:* ${new Date(task.deadlineDate).toLocaleString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}, Pukul ${task.deadlineTime}\n` +
+      `🚨 *Prioritas:* Tinggal 1 hari lagi! ⏰\n\n` +
+      `⏳ *Jangan sampai terlewat! Selesaikan tugasmu dengan baik!* 💪`;
   }
 
   try {
@@ -48,7 +48,7 @@ const sendReminderMessages = async (user, task, daysUntilDeadline) => {
   }
 };
 
-// Create task and send notifications
+// Fungsi untuk membuat tugas dan mengirim pesan
 const createTask = async (req, res) => {
   try {
     const { name, description, deadlineDate, deadlineTime, users } = req.body;
@@ -58,9 +58,10 @@ const createTask = async (req, res) => {
 
     const taskUsers = await User.find({ '_id': { $in: users } });
 
-    taskUsers.forEach((user) => {
+    // Kirim pesan ke semua pengguna terkait tugas ini
+    for (const user of taskUsers) {
       sendTaskCreatedMessage(user, newTask);
-    });
+    }
 
     res.status(201).send(newTask);
   } catch (err) {
@@ -69,7 +70,7 @@ const createTask = async (req, res) => {
   }
 };
 
-// Membaca semua task
+// Fungsi untuk membaca semua tugas
 const getTasks = async (req, res) => {
   try {
     const tasks = await Task.find().populate('users');
@@ -79,7 +80,7 @@ const getTasks = async (req, res) => {
   }
 };
 
-// Membaca task berdasarkan ID
+// Fungsi untuk membaca tugas berdasarkan ID
 const getTaskById = async (req, res) => {
   try {
     const task = await Task.findById(req.params.id).populate('users');
@@ -92,7 +93,7 @@ const getTaskById = async (req, res) => {
   }
 };
 
-// Mengupdate task
+// Fungsi untuk mengupdate tugas
 const updateTask = async (req, res) => {
   try {
     const { name, description, deadlineDate, deadlineTime, users } = req.body;
@@ -110,7 +111,7 @@ const updateTask = async (req, res) => {
   }
 };
 
-// Menghapus task
+// Fungsi untuk menghapus tugas
 const deleteTask = async (req, res) => {
   try {
     const task = await Task.findByIdAndDelete(req.params.id);
