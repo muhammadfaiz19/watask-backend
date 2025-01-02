@@ -12,11 +12,11 @@ app.use(express.json());
 
 // CORS Configuration
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173' || 'https://watask-sooty.vercel.app',
+  origin: "*" ,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
-app.use(cors(corsOptions)); 
+app.use(cors(corsOptions));
 
 // MongoDB Connection
 const mongoURI = process.env.MONGO_URI;
