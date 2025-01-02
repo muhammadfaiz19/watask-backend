@@ -12,7 +12,7 @@ app.use(express.json());
 
 // CORS Configuration
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173' || 'http://localhost:3000',
+  origin: process.env.FRONTEND_URL || 'http://localhost:5173' || 'https://watask-sooty.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
