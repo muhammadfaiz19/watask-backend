@@ -5,13 +5,20 @@ require('dotenv').config();
 
 // Koneksi MongoDB
 const mongoUri = process.env.MONGO_URI;
+if (!mongoUri) {
+    throw new Error('MONGO_URI is not defined in .env file');
+}
+
 const clientMongo = new MongoClient(mongoUri);
 
-clientMongo.connect().then(() => {
-    console.log('Connected to MongoDB');
-}).catch((err) => {
-    console.error('MongoDB connection error:', err);
-});
+clientMongo.connect()
+    .then(() => {
+        console.log('Connected to MongoDB');
+    })
+    .catch((err) => {
+        console.error('MongoDB connection error:', err);
+        process.exit(1);
+    });
 
 // Membuat kelas MongoAuth untuk menyimpan session ke MongoDB
 class MongoAuth extends LocalAuth {
@@ -39,7 +46,7 @@ class MongoAuth extends LocalAuth {
     }
 }
 
-// Membuat client WhatsApp menggunakan MongoAuth untuk session
+// Membuat client WhatsApp menggunakan MongoAuth
 const client = new Client({
     authStrategy: new MongoAuth(),
     puppeteer: {
@@ -62,8 +69,8 @@ client.on('ready', () => {
     console.log('WhatsApp Client is ready!');
 });
 
-client.on('auth_failure', () => {
-    console.log('Authentication failed, please try again.');
+client.on('auth_failure', (msg) => {
+    console.error('Authentication failed:', msg);
 });
 
 client.initialize();
