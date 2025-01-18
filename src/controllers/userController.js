@@ -1,7 +1,6 @@
 // src/controllers/userController.js
 const User = require('../models/User');
 
-// Membuat user baru
 const createUser = async (req, res) => {
   try {
     const { name, phoneNumber, email } = req.body;

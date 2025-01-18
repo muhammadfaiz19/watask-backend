@@ -1,3 +1,15 @@
-2025/01/02-12:42:43.313 1338 Reusing MANIFEST C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
-2025/01/02-12:42:43.324 1338 Recovering log #23
-2025/01/02-12:42:43.331 1338 Reusing old log C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\Local Storage\leveldb/000023.log 
+2025/01/19-00:05:45.020 edc8 Reusing MANIFEST C:\Paiss\watask-backend\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
+2025/01/19-00:05:45.021 edc8 Recovering log #15
+2025/01/19-00:05:45.022 edc8 Reusing old log C:\Paiss\watask-backend\.wwebjs_auth\session\Default\Local Storage\leveldb/000015.log 
+2025/01/19-00:06:47.354 c950 Level-0 table #19: started
+2025/01/19-00:06:47.369 c950 Level-0 table #19: 13740 bytes OK
+2025/01/19-00:06:47.371 c950 Delete type=0 #15
+2025/01/19-00:06:47.372 c950 Compacting 4@0 + 1@1 files
+2025/01/19-00:06:47.376 c950 Generated table #20@0: 91 keys, 4340 bytes
+2025/01/19-00:06:47.377 c950 Compacted 4@0 + 1@1 files => 4340 bytes
+2025/01/19-00:06:47.378 c950 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/01/19-00:06:47.379 c950 Delete type=2 #8
+2025/01/19-00:06:47.379 c950 Delete type=2 #10
+2025/01/19-00:06:47.379 c950 Delete type=2 #13
+2025/01/19-00:06:47.379 c950 Delete type=2 #16
+2025/01/19-00:06:47.379 c950 Delete type=2 #19

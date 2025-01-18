@@ -1,14 +1,15 @@
-2025/01/02-12:42:45.136 354c Reusing MANIFEST C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/01/02-12:42:45.139 354c Recovering log #379
-2025/01/02-12:42:45.158 354c Reusing old log C:\Users\Paiss\Desktop\wa-task-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000379.log 
-2025/01/02-12:42:45.159 354c Delete type=2 #378
-2025/01/02-12:42:50.630 3dac Level-0 table #384: started
-2025/01/02-12:42:50.722 3dac Level-0 table #384: 208059 bytes OK
-2025/01/02-12:42:50.742 3dac Delete type=0 #379
-2025/01/02-12:42:50.746 354c Manual compaction at level-0 from '\x00z\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00{\x00\x00\x00' @ 0 : 0; will stop at '\x00z\x00\x00\x05' @ 769212 : 1
-2025/01/02-12:42:50.746 354c Compacting 1@0 + 1@1 files
-2025/01/02-12:42:51.396 354c Generated table #385@0: 101515 keys, 1982056 bytes
-2025/01/02-12:42:51.396 354c Compacted 1@0 + 1@1 files => 1982056 bytes
-2025/01/02-12:42:51.405 354c compacted to: files[ 0 1 1 0 0 0 0 ]
-2025/01/02-12:42:51.406 354c Delete type=2 #384
-2025/01/02-12:42:51.409 3dac Manual compaction at level-0 from '\x00z\x00\x00\x05' @ 769212 : 1 .. '\x00{\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/01/19-00:05:47.078 e1b0 Reusing MANIFEST C:\Paiss\watask-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/01/19-00:05:47.078 e1b0 Recovering log #129
+2025/01/19-00:05:47.115 e1b0 Reusing old log C:\Paiss\watask-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000129.log 
+2025/01/19-00:05:49.797 dce4 Level-0 table #135: started
+2025/01/19-00:05:49.817 dce4 Level-0 table #135: 247746 bytes OK
+2025/01/19-00:05:49.819 dce4 Delete type=0 #129
+2025/01/19-00:05:49.823 dce4 Manual compaction at level-0 from '\x00/\x00\x00\x00' @ 72057594037927935 : 1 .. '\x000\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/01/19-00:05:52.420 e104 Compacting 1@1 + 2@2 files
+2025/01/19-00:05:52.557 e104 Generated table #136@1: 56580 keys, 2220977 bytes
+2025/01/19-00:05:52.615 e104 Generated table #137@1: 22431 keys, 482391 bytes
+2025/01/19-00:05:52.615 e104 Compacted 1@1 + 2@2 files => 2703368 bytes
+2025/01/19-00:05:52.617 e104 compacted to: files[ 0 0 2 0 0 0 0 ]
+2025/01/19-00:05:52.617 e104 Delete type=2 #131
+2025/01/19-00:05:52.617 e104 Delete type=2 #132
+2025/01/19-00:05:52.617 e104 Delete type=2 #135

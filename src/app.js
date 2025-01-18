@@ -4,8 +4,10 @@ const mongoose = require('mongoose');
 const cors = require('cors'); 
 const taskRoutes = require('./routes/taskRoutes');
 const userRoutes = require('./routes/userRoutes');
-const client = require('./whatsapp'); 
 require('dotenv').config(); 
+
+// Import file scheduler
+require('./services/whatsappService'); 
 
 const app = express();
 app.use(express.json());
