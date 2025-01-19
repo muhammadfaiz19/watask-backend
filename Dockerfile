@@ -1,22 +1,23 @@
-FROM node:18-alpine as builder
-
-WORKDIR /src/app
-
-COPY package*.json ./
-RUN npm install --only=production --cache-dir=/cache
-
-COPY . .
-
+# Gunakan image node sebagai base image
 FROM node:18-alpine
 
+# Set working directory dalam container
 WORKDIR /src/app
 
-# Copy only the necessary files from the previous stage
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./
+# Copy file package.json dan package-lock.json untuk instalasi dependencies
+COPY package*.json ./
 
-ENV NODE_ENV=production
+# Install dependencies
+RUN npm install
 
+# Copy seluruh source code ke container
+COPY . .
+
+# Compile TypeScript menjadi JavaScript
+RUN npm run build
+
+# Ekspose port yang akan digunakan oleh aplikasi
 EXPOSE 4000
 
-CMD ["npm", "start"]
+# Perintah untuk menjalankan aplikasi
+CMD ["node", "src/app.js"]
