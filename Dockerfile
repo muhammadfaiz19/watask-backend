@@ -1,33 +1,22 @@
-FROM node:18-alpine
+FROM node:18-alpine as builder
 
-# Install dependencies untuk Chromium dan Puppeteer
-RUN apk update && apk add --no-cache \
-    chromium \
-    nss \
-    freetype \
-    harfbuzz \
-    ca-certificates \
-    ttf-freefont \
-    fontconfig \
-    && rm -rf /var/cache/apk/*
+WORKDIR /app
 
-# Tentukan path ke executable Chrome
-ENV PUPPETEER_EXECUTABLE_PATH="/usr/bin/chromium-browser"
-
-WORKDIR /usr/src/app
-
-# Salin package.json dan install dependensi
 COPY package*.json ./
-RUN npm install --omit=dev
+RUN npm install --only=production --cache-dir=/cache
 
-# Salin semua file aplikasi
 COPY . .
 
-# Set environment variable
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy only the necessary files from the previous stage
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./
+
 ENV NODE_ENV=production
 
-# Expose port aplikasi
 EXPOSE 3000
 
-# Jalankan aplikasi
 CMD ["npm", "start"]
