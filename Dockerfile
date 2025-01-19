@@ -13,8 +13,6 @@ RUN npm install
 # Copy seluruh source code ke container
 COPY . .
 
-# Compile TypeScript menjadi JavaScript
-RUN npm run build
 
 # Ekspose port yang akan digunakan oleh aplikasi
 EXPOSE 4000
