@@ -5,9 +5,6 @@ require('dotenv').config();
 
 // Koneksi MongoDB
 const mongoUri = process.env.MONGO_URI;
-if (!mongoUri) {
-    throw new Error('MONGO_URI is not defined in .env file');
-}
 
 const clientMongo = new MongoClient(mongoUri);
 
@@ -40,10 +37,6 @@ class MongoAuth extends LocalAuth {
         const sessionDoc = await this.collection.findOne({ _id: 'whatsapp_session' });
         return sessionDoc ? sessionDoc.session : null;
     }
-
-    async deleteSession() {
-        await this.collection.deleteOne({ _id: 'whatsapp_session' });
-    }
 }
 
 // Membuat client WhatsApp menggunakan MongoAuth
@@ -56,11 +49,12 @@ const client = new Client({
             '--disable-setuid-sandbox',
             '--disable-gpu',
             '--remote-debugging-port=9222',
-        ]
-    }
+        ],
+    },
 });
 
-client.on('qr', (qr) => {
+// Override beforeBrowserInitialized to prevent default session directory creation
+client.on('qr', qr => {
     qrcode.generate(qr, { small: true });
     console.log('QR Code received, scan the QR code');
 });
@@ -69,10 +63,8 @@ client.on('ready', () => {
     console.log('WhatsApp Client is ready!');
 });
 
-client.on('auth_failure', (msg) => {
-    console.error('Authentication failed:', msg);
+client.on('auth_failure', msg => {
+    console.error('Authentication failure', msg);
 });
 
 client.initialize();
-
-module.exports = { client };

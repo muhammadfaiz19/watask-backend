@@ -1,15 +1,15 @@
-2025/01/19-00:05:47.078 e1b0 Reusing MANIFEST C:\Paiss\watask-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/01/19-00:05:47.078 e1b0 Recovering log #129
-2025/01/19-00:05:47.115 e1b0 Reusing old log C:\Paiss\watask-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000129.log 
-2025/01/19-00:05:49.797 dce4 Level-0 table #135: started
-2025/01/19-00:05:49.817 dce4 Level-0 table #135: 247746 bytes OK
-2025/01/19-00:05:49.819 dce4 Delete type=0 #129
-2025/01/19-00:05:49.823 dce4 Manual compaction at level-0 from '\x00/\x00\x00\x00' @ 72057594037927935 : 1 .. '\x000\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/01/19-00:05:52.420 e104 Compacting 1@1 + 2@2 files
-2025/01/19-00:05:52.557 e104 Generated table #136@1: 56580 keys, 2220977 bytes
-2025/01/19-00:05:52.615 e104 Generated table #137@1: 22431 keys, 482391 bytes
-2025/01/19-00:05:52.615 e104 Compacted 1@1 + 2@2 files => 2703368 bytes
-2025/01/19-00:05:52.617 e104 compacted to: files[ 0 0 2 0 0 0 0 ]
-2025/01/19-00:05:52.617 e104 Delete type=2 #131
-2025/01/19-00:05:52.617 e104 Delete type=2 #132
-2025/01/19-00:05:52.617 e104 Delete type=2 #135
+2025/01/19-08:15:38.105 10528 Reusing MANIFEST C:\Paiss\watask-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/01/19-08:15:38.117 10528 Recovering log #134
+2025/01/19-08:15:38.170 10528 Reusing old log C:\Paiss\watask-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000134.log 
+2025/01/19-08:15:43.285 e9e0 Level-0 table #140: started
+2025/01/19-08:15:43.310 e9e0 Level-0 table #140: 409468 bytes OK
+2025/01/19-08:15:43.314 e9e0 Delete type=0 #134
+2025/01/19-08:15:43.318 e9e0 Manual compaction at level-0 from '\x000\x00\x00\x00' @ 72057594037927935 : 1 .. '\x001\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/01/19-08:15:45.574 109c8 Compacting 1@1 + 2@2 files
+2025/01/19-08:15:45.678 109c8 Generated table #141@1: 57679 keys, 2222735 bytes
+2025/01/19-08:15:45.727 109c8 Generated table #142@1: 23759 keys, 552426 bytes
+2025/01/19-08:15:45.727 109c8 Compacted 1@1 + 2@2 files => 2775161 bytes
+2025/01/19-08:15:45.728 109c8 compacted to: files[ 0 0 2 0 0 0 0 ]
+2025/01/19-08:15:45.728 109c8 Delete type=2 #136
+2025/01/19-08:15:45.728 109c8 Delete type=2 #137
+2025/01/19-08:15:45.728 109c8 Delete type=2 #140
