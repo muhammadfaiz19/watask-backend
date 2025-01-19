@@ -1,13 +1,13 @@
-2025/01/19-09:43:09.920 156dc Reusing MANIFEST C:\Paiss\watask-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/01/19-09:43:09.922 156dc Recovering log #52
-2025/01/19-09:43:09.988 156dc Reusing old log C:\Paiss\watask-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000052.log 
-2025/01/19-09:43:15.980 15974 Level-0 table #57: started
-2025/01/19-09:43:16.110 15974 Level-0 table #57: 374566 bytes OK
-2025/01/19-09:43:16.115 15974 Delete type=0 #52
-2025/01/19-09:43:16.127 15974 Manual compaction at level-0 from '\x00\x1a\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x1b\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/01/19-09:43:20.893 15978 Compacting 1@1 + 1@2 files
-2025/01/19-09:43:21.180 15978 Generated table #58@1: 52322 keys, 1839376 bytes
-2025/01/19-09:43:21.180 15978 Compacted 1@1 + 1@2 files => 1839376 bytes
-2025/01/19-09:43:21.183 15978 compacted to: files[ 0 0 1 0 0 0 0 ]
-2025/01/19-09:43:21.185 15978 Delete type=2 #54
-2025/01/19-09:43:21.185 15978 Delete type=2 #57
+2025/01/19-09:51:27.749 16004 Reusing MANIFEST C:\Paiss\watask-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/01/19-09:51:27.750 16004 Recovering log #56
+2025/01/19-09:51:27.773 16004 Reusing old log C:\Paiss\watask-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000056.log 
+2025/01/19-09:51:30.084 159d8 Level-0 table #61: started
+2025/01/19-09:51:30.096 159d8 Level-0 table #61: 115382 bytes OK
+2025/01/19-09:51:30.097 159d8 Delete type=0 #56
+2025/01/19-09:51:30.099 159d8 Manual compaction at level-0 from '\x00\x1b\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x1c\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/01/19-09:51:32.704 15d90 Compacting 1@1 + 1@2 files
+2025/01/19-09:51:32.841 15d90 Generated table #62@1: 53476 keys, 1879247 bytes
+2025/01/19-09:51:32.841 15d90 Compacted 1@1 + 1@2 files => 1879247 bytes
+2025/01/19-09:51:32.843 15d90 compacted to: files[ 0 0 1 0 0 0 0 ]
+2025/01/19-09:51:32.843 15d90 Delete type=2 #58
+2025/01/19-09:51:32.843 15d90 Delete type=2 #61

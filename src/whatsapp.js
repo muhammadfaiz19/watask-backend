@@ -40,12 +40,8 @@ class MongoAuth extends LocalAuth {
 const client = new Client({
   authStrategy: new MongoAuth(),
   puppeteer: {
-    headless: process.env.ENVIRONMENT === 'production',
-    args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-gpu',
-    ],
+    headless: process.env.ENVIRONMENT === 'production', // Tentukan mode headless sesuai dengan kebutuhan
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu'],
   },
 });
 
