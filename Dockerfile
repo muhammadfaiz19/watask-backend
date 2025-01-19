@@ -1,6 +1,6 @@
 FROM node:18-alpine as builder
 
-WORKDIR /app
+WORKDIR /src/app
 
 COPY package*.json ./
 RUN npm install --only=production --cache-dir=/cache
