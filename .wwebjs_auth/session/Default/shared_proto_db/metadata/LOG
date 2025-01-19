@@ -1,3 +1,2 @@
-2025/01/18-12:03:00.887 d068 Reusing MANIFEST C:\Paiss\watask-backend\.wwebjs_auth\session\Default\shared_proto_db\metadata/MANIFEST-000001
-2025/01/18-12:03:00.888 d068 Recovering log #3
-2025/01/18-12:03:00.888 d068 Reusing old log C:\Paiss\watask-backend\.wwebjs_auth\session\Default\shared_proto_db\metadata/000003.log 
+2025/01/19-09:05:41.295 13968 Creating DB C:\Paiss\watask-backend\.wwebjs_auth\session\Default\shared_proto_db\metadata since it was missing.
+2025/01/19-09:05:41.307 13968 Reusing MANIFEST C:\Paiss\watask-backend\.wwebjs_auth\session\Default\shared_proto_db\metadata/MANIFEST-000001

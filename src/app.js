@@ -1,37 +1,23 @@
-// src/app.js
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors'); 
-const taskRoutes = require('./routes/taskRoutes');
-const userRoutes = require('./routes/userRoutes');
-require('dotenv').config(); 
-
-// Import file scheduler
-require('./services/whatsappService'); 
+const cors = require('cors');
+require('dotenv').config();
+require('./services/whatsappService');
 
 const app = express();
 app.use(express.json());
+app.use(cors({ origin: '*', methods: ['GET', 'POST', 'PUT', 'DELETE'] }));
 
-// CORS Configuration
-const corsOptions = {
-  origin: "*" ,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-};
-app.use(cors(corsOptions));
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('[MongoDB] Connected successfully'))
+  .catch(err => console.error('[MongoDB] Connection error:', err.message));
 
-// MongoDB Connection
-const mongoURI = process.env.MONGO_URI;
-mongoose
-  .connect(mongoURI)
-  .then(() => console.log('Connected to MongoDB'))
-  .catch((err) => console.error('Error connecting to MongoDB:', err));
+// Routes
+const taskRoutes = require('./routes/taskRoutes');
+const userRoutes = require('./routes/userRoutes');
 
-// Gunakan routes
 app.use('/api', taskRoutes);
 app.use('/api', userRoutes);
 
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+app.listen(PORT, () => console.log(`[Server] Running on port ${PORT}`));

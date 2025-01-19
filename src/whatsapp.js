@@ -5,66 +5,63 @@ require('dotenv').config();
 
 // Koneksi MongoDB
 const mongoUri = process.env.MONGO_URI;
-
 const clientMongo = new MongoClient(mongoUri);
 
 clientMongo.connect()
-    .then(() => {
-        console.log('Connected to MongoDB');
-    })
-    .catch((err) => {
-        console.error('MongoDB connection error:', err);
-        process.exit(1);
-    });
+  .then(() => console.log('[MongoDB] Connected to database'))
+  .catch(err => {
+    console.error('[MongoDB] Connection error:', err.message);
+    process.exit(1);
+  });
 
-// Membuat kelas MongoAuth untuk menyimpan session ke MongoDB
+// MongoAuth untuk menyimpan sesi ke MongoDB
 class MongoAuth extends LocalAuth {
-    constructor() {
-        super();
-        this.db = clientMongo.db('whatsapp_sessions');
-        this.collection = this.db.collection('sessions');
-    }
+  constructor() {
+    super();
+    this.db = clientMongo.db('whatsapp_sessions');
+    this.collection = this.db.collection('sessions');
+  }
 
-    async saveSession(session) {
-        await this.collection.updateOne(
-            { _id: 'whatsapp_session' },
-            { $set: { session: session } },
-            { upsert: true }
-        );
-    }
+  async saveSession(session) {
+    await this.collection.updateOne(
+      { _id: 'whatsapp_session' },
+      { $set: { session } },
+      { upsert: true }
+    );
+  }
 
-    async loadSession() {
-        const sessionDoc = await this.collection.findOne({ _id: 'whatsapp_session' });
-        return sessionDoc ? sessionDoc.session : null;
-    }
+  async loadSession() {
+    const sessionDoc = await this.collection.findOne({ _id: 'whatsapp_session' });
+    return sessionDoc ? sessionDoc.session : null;
+  }
 }
 
-// Membuat client WhatsApp menggunakan MongoAuth
+// Membuat client WhatsApp
 const client = new Client({
-    authStrategy: new MongoAuth(),
-    puppeteer: {
-        headless: true,
-        args: [
-            '--no-sandbox',
-            '--disable-setuid-sandbox',
-            '--disable-gpu',
-            '--remote-debugging-port=9222',
-        ],
-    },
+  authStrategy: new MongoAuth(),
+  puppeteer: {
+    headless: process.env.ENVIRONMENT === 'production',
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-gpu',
+    ],
+  },
 });
 
-// Override beforeBrowserInitialized to prevent default session directory creation
 client.on('qr', qr => {
-    qrcode.generate(qr, { small: true });
-    console.log('QR Code received, scan the QR code');
+  qrcode.generate(qr, { small: true });
+  console.log('[WhatsApp] QR Code received, please scan');
 });
 
 client.on('ready', () => {
-    console.log('WhatsApp Client is ready!');
+  console.log('[WhatsApp] Client is ready!');
 });
 
 client.on('auth_failure', msg => {
-    console.error('Authentication failure', msg);
+  console.error('[WhatsApp] Authentication failure:', msg);
 });
 
 client.initialize();
+
+module.exports = { client };

@@ -1,15 +1,13 @@
-2025/01/19-08:15:38.105 10528 Reusing MANIFEST C:\Paiss\watask-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/01/19-08:15:38.117 10528 Recovering log #134
-2025/01/19-08:15:38.170 10528 Reusing old log C:\Paiss\watask-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000134.log 
-2025/01/19-08:15:43.285 e9e0 Level-0 table #140: started
-2025/01/19-08:15:43.310 e9e0 Level-0 table #140: 409468 bytes OK
-2025/01/19-08:15:43.314 e9e0 Delete type=0 #134
-2025/01/19-08:15:43.318 e9e0 Manual compaction at level-0 from '\x000\x00\x00\x00' @ 72057594037927935 : 1 .. '\x001\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/01/19-08:15:45.574 109c8 Compacting 1@1 + 2@2 files
-2025/01/19-08:15:45.678 109c8 Generated table #141@1: 57679 keys, 2222735 bytes
-2025/01/19-08:15:45.727 109c8 Generated table #142@1: 23759 keys, 552426 bytes
-2025/01/19-08:15:45.727 109c8 Compacted 1@1 + 2@2 files => 2775161 bytes
-2025/01/19-08:15:45.728 109c8 compacted to: files[ 0 0 2 0 0 0 0 ]
-2025/01/19-08:15:45.728 109c8 Delete type=2 #136
-2025/01/19-08:15:45.728 109c8 Delete type=2 #137
-2025/01/19-08:15:45.728 109c8 Delete type=2 #140
+2025/01/19-09:11:24.878 122f4 Reusing MANIFEST C:\Paiss\watask-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/01/19-09:11:24.879 122f4 Recovering log #47
+2025/01/19-09:11:24.884 122f4 Reusing old log C:\Paiss\watask-backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000047.log 
+2025/01/19-09:11:30.908 122f4 Level-0 table #53: started
+2025/01/19-09:11:30.918 122f4 Level-0 table #53: 28588 bytes OK
+2025/01/19-09:11:30.926 122f4 Delete type=0 #47
+2025/01/19-09:11:30.928 122f4 Manual compaction at level-0 from '\x00\x19\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x1a\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/01/19-09:11:35.452 122f4 Compacting 1@1 + 1@2 files
+2025/01/19-09:11:35.609 122f4 Generated table #54@1: 48982 keys, 1724295 bytes
+2025/01/19-09:11:35.609 122f4 Compacted 1@1 + 1@2 files => 1724295 bytes
+2025/01/19-09:11:35.611 122f4 compacted to: files[ 0 0 1 0 0 0 0 ]
+2025/01/19-09:11:35.611 122f4 Delete type=2 #50
+2025/01/19-09:11:35.611 122f4 Delete type=2 #53
