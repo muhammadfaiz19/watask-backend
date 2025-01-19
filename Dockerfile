@@ -1,35 +1,30 @@
 # Gunakan image node sebagai base image
 FROM node:18-alpine
 
-# Install dependensi sistem yang diperlukan untuk Chromium
-RUN apk add --no-cache \
-  bash \
-  curl \
-  freetype \
-  gdk-pixbuf \
-  git \
-  glib \
-  harfbuzz \
-  icu-libs \
-  libjpeg-turbo \
-  libpng \
-  libwebp \
-  nss \
-  ttf-freefont \
-  udev \
-  && rm -rf /var/cache/apk/*
+# Install dependensi yang dibutuhkan oleh Puppeteer untuk menjalankan Chromium
+RUN apk update && apk add --no-cache \
+    bash \
+    chromium \
+    nss \
+    freetype \
+    harfbuzz \
+    ttf-freefont \
+    && rm -rf /var/cache/apk/*
 
 # Set working directory dalam container
 WORKDIR /src/app
 
 # Copy file package.json dan package-lock.json untuk instalasi dependencies
-COPY package*.json ./
+COPY package*.json ./ 
 
-# Install dependencies (puppeteer di sini mengunduh Chromium secara otomatis)
+# Install dependencies
 RUN npm install
 
 # Copy seluruh source code ke container
 COPY . .
+
+# Set environment variable untuk menunjukkan lokasi Chromium
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
 # Ekspose port yang akan digunakan oleh aplikasi
 EXPOSE 4000
