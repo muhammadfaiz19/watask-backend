@@ -1,3 +1,6 @@
-2025/01/19-09:51:26.783 15d4c Reusing MANIFEST C:\Paiss\watask-backend\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
-2025/01/19-09:51:26.787 15d4c Recovering log #3
-2025/01/19-09:51:26.788 15d4c Reusing old log C:\Paiss\watask-backend\.wwebjs_auth\session\Default\Local Storage\leveldb/000003.log 
+2025/01/20-08:12:37.644 1888 Reusing MANIFEST C:\Paiss\watask-backend\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
+2025/01/20-08:12:37.669 1888 Recovering log #10
+2025/01/20-08:12:37.670 1888 Reusing old log C:\Paiss\watask-backend\.wwebjs_auth\session\Default\Local Storage\leveldb/000010.log 
+2025/01/20-09:00:57.285 33d8 Level-0 table #14: started
+2025/01/20-09:00:57.307 33d8 Level-0 table #14: 14359 bytes OK
+2025/01/20-09:00:57.324 33d8 Delete type=0 #10

@@ -8,7 +8,7 @@ const {
 } = require('../utils/messageTemplates');
 
 // Menjadwalkan pengiriman pesan setiap 5 menit
-cron.schedule("*/1 * * * *", async () => {
+cron.schedule("*/20 * * * *", async () => {
   console.log(`[Scheduler] Initializing reminder task scheduler...`);
 
   // Validasi apakah client WhatsApp terhubung

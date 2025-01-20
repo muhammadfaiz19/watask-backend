@@ -36,21 +36,14 @@ const convertToDateTime = (dateString, timeString) => {
 const createTask = async (req, res) => {
   try {
     const { name, description, deadlineDate, deadlineTime, users } = req.body;
-
-    // Konversi dan validasi tanggal
     const convertedDeadline = convertToDateTime(deadlineDate, deadlineTime);
-    
-    // Log untuk debugging
-    console.log('Original deadline:', { deadlineDate, deadlineTime });
-    console.log('Converted deadline:', convertedDeadline);
-
     const newTask = new Task({ 
       name, 
       description, 
       deadlineDate: convertedDeadline,
       deadlineTime,
       users,
-      sent: false // Pastikan status awal adalah false
+      sent: false 
     });
 
     await newTask.save();
@@ -62,7 +55,7 @@ const createTask = async (req, res) => {
     for (const user of taskUsers) {
       const message = generateTaskCreatedMessage(user, {
         ...newTask.toObject(),
-        deadlineDate: convertedDeadline // Gunakan tanggal yang sudah dikonversi
+        deadlineDate: convertedDeadline 
       });
       
       try {

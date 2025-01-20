@@ -1,10 +1,17 @@
-// src/controllers/userController.js
 const User = require('../models/User');
 
+// Membuat user
 const createUser = async (req, res) => {
   try {
-    const { name, phoneNumber, email } = req.body;
-    const newUser = new User({ name, phoneNumber, email });
+    const { name, phoneNumber, email, username, password, role } = req.body;
+
+    // Validasi untuk memastikan email dan username unik
+    const existingUser = await User.findOne({ $or: [{ email }, { username }] });
+    if (existingUser) {
+      return res.status(400).json({ message: 'Email atau username sudah terdaftar' });
+    }
+
+    const newUser = new User({ name, phoneNumber, email, username, password, role });
     await newUser.save();
     res.status(201).json({
       message: 'User created successfully',
@@ -41,10 +48,17 @@ const getUserById = async (req, res) => {
 // Mengupdate user
 const updateUser = async (req, res) => {
   try {
-    const { name, phoneNumber, email } = req.body;
+    const { name, phoneNumber, email, username, role } = req.body;
+
+    // Pastikan email dan username tetap unik
+    const existingUser = await User.findOne({ $or: [{ email }, { username }] });
+    if (existingUser && existingUser._id.toString() !== req.params.id) {
+      return res.status(400).json({ message: 'Email atau username sudah terdaftar' });
+    }
+
     const user = await User.findByIdAndUpdate(
       req.params.id,
-      { name, phoneNumber, email },
+      { name, phoneNumber, email, username, role },
       { new: true }
     );
     if (!user) {

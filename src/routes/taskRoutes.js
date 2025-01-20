@@ -1,12 +1,18 @@
-// src/routes/taskRoutes.js
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const { createTask, getTasks, getTaskById, updateTask, deleteTask } = require("../controllers/taskController");
+const { createUser, getUsers, getUserById, updateUser, deleteUser } = require('../controllers/userController');
+// const { protect, isAdmin } = require('../middleware/auth');
 
-router.post("/tasks", createTask);
-router.get("/tasks", getTasks);
-router.get("/tasks/:id", getTaskById);
-router.put("/tasks/:id", updateTask);
-router.delete("/tasks/:id", deleteTask);
+// router.post('/users', protect, isAdmin, createUser);  
+// router.get('/users', protect, getUsers);     
+// router.get('/users/:id', protect, isAdmin, getUserById); 
+// router.put('/users/:id', protect, isAdmin, updateUser); 
+// router.delete('/users/:id', protect, isAdmin, deleteUser);
+
+router.post('/users', createUser);  
+router.get('/users', getUsers);     
+router.get('/users/:id', getUserById); 
+router.put('/users/:id', updateUser); 
+router.delete('/users/:id', deleteUser);
 
 module.exports = router;
