@@ -3,6 +3,7 @@ const router = express.Router();
 const { createUser, getUsers, getUserById, updateUser, deleteUser } = require('../controllers/userController');
 // const { protect, isAdmin } = require('../middleware/auth');
 
+
 // router.post('/users', protect, isAdmin, createUser);  
 // router.get('/users', protect, getUsers);     
 // router.get('/users/:id', protect, isAdmin, getUserById); 
