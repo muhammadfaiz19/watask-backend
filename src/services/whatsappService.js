@@ -7,23 +7,12 @@ const {
   generateReminderMessage 
 } = require('../utils/messageTemplates');
 
-// Menjadwalkan pengiriman pesan setiap 5 menit
-cron.schedule("*/20 * * * *", async () => {
-  console.log(`[Scheduler] Initializing reminder task scheduler...`);
-
-  // Validasi apakah client WhatsApp terhubung
-  if (!client || !client.pupPage || !client.pupPage.isConnected()) {
-    console.error(`[Scheduler] WhatsApp client is not connected.`);
-    return;
-  }
-
+cron.schedule("* * * * *", async () => {  // Run every minute
   const now = new Date();
   try {
     const tasks = await Task.find({
-      $and: [
-        { sent: { $ne: true } },
-        { deadlineDate: { $gte: now.toISOString().split('T')[0] } },
-      ],
+      sent: { $ne: true },
+      deadlineDate: { $gte: now.toISOString().split('T')[0] }
     }).populate("users");
 
     for (const task of tasks) {
@@ -33,14 +22,17 @@ cron.schedule("*/20 * * * *", async () => {
 
       const timeUntilDeadline = deadline - now;
       const daysUntilDeadline = Math.floor(timeUntilDeadline / (1000 * 60 * 60 * 24));
+      const hoursUntilDeadline = Math.floor(timeUntilDeadline / (1000 * 60 * 60));
 
-      if (daysUntilDeadline <= 3 && daysUntilDeadline >= 0) {
+      // Separate conditions for H-3 and H-1 reminders
+      if ((daysUntilDeadline === 3 && hoursUntilDeadline <= 72) || 
+          (daysUntilDeadline === 1 && hoursUntilDeadline <= 24)) {
         for (const user of task.users) {
           try {
             const message = generateReminderMessage(user, task, daysUntilDeadline);
             await client.sendMessage(`${user.phoneNumber}@c.us`, message);
           } catch (err) {
-            console.error(`[Scheduler] Error sending message to ${user.phoneNumber}: ${err.message}`);
+            console.error(`Error sending reminder: ${err.message}`);
           }
         }
 
@@ -49,7 +41,7 @@ cron.schedule("*/20 * * * *", async () => {
       }
     }
   } catch (err) {
-    console.error(`[Scheduler] Error fetching tasks: ${err.message}`);
+    console.error(`Scheduler error: ${err.message}`);
   }
 });
 
