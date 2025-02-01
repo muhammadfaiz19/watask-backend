@@ -1,6 +1,5 @@
-const bcrypt = require('bcryptjs');
 const mongoose = require("mongoose");
-
+const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema(
   {
@@ -39,14 +38,15 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ["admin", "user"],
-      default: "user",
+      enum: ['admin', 'user'],
+      default: 'user',
+      required: true
     },
   },
   { timestamps: true }
 );
 
-// Pre-save hook to hash the password before saving to database
+// Pre-save hook to hash the password
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
 

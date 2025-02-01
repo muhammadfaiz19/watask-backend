@@ -6,25 +6,62 @@ const createUser = async (req, res) => {
   try {
     const { name, phoneNumber, email, username, password, role } = req.body;
 
-    console.log("Received data:", req.body);
-
-    // Validasi untuk memastikan email dan username unik
-    const existingUser = await User.findOne({ $or: [{ email }, { username }] });
-    if (existingUser) {
-      return res.status(400).json({ message: 'Email atau username sudah terdaftar' });
+    // Validate required fields
+    if (!name || !phoneNumber || !email || !username || !password) {
+      return res.status(400).json({ message: 'All fields are required' });
     }
 
-    const newUser = new User({ name, phoneNumber, email, username, password, role });
+    // Validate role
+    if (role && !['admin', 'user'].includes(role)) {
+      return res.status(400).json({ message: 'Invalid role value' });
+    }
+
+    // Check for existing user
+    const existingUser = await User.findOne({ 
+      $or: [
+        { email: email.toLowerCase() }, 
+        { username: username.toLowerCase() }
+      ] 
+    });
+    
+    if (existingUser) {
+      return res.status(400).json({ 
+        message: existingUser.email === email.toLowerCase() 
+          ? 'Email already registered' 
+          : 'Username already taken'
+      });
+    }
+
+    // Create new user
+    const newUser = new User({
+      name,
+      phoneNumber,
+      email: email.toLowerCase(),
+      username: username.toLowerCase(),
+      password,
+      role: role || 'user' // Set default role if not provided
+    });
+
     await newUser.save();
+
+    // Remove password from response
+    const userResponse = newUser.toObject();
+    delete userResponse.password;
+
     res.status(201).json({
       message: 'User created successfully',
-      user: newUser
+      user: userResponse
     });
   } catch (err) {
     console.error('Error during user creation:', err);
-    res.status(500).json({ message: 'Failed to create user' });
+    res.status(500).json({ 
+      message: err.message || 'Failed to create user',
+      error: process.env.NODE_ENV === 'development' ? err.message : undefined
+    });
   }
 };
+
+
 
 // Membaca semua user
 const getUsers = async (req, res) => {
