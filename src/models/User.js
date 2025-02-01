@@ -1,4 +1,6 @@
+const bcrypt = require('bcryptjs');
 const mongoose = require("mongoose");
+
 
 const userSchema = new mongoose.Schema(
   {
@@ -43,5 +45,18 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+// Pre-save hook to hash the password before saving to database
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
+
+  try {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = mongoose.model("User", userSchema);
